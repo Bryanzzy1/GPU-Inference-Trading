@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.16)
+project(gpu_inference_trading LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release)
+endif()
+
+# Day 1: hello-CMake target proving the build path.
+add_executable(hello src/hello.cpp)
+
+# Day 2: tick parser — reads Binance aggTrades CSV into vector<Trade>.
+add_executable(parse_trades src/main.cpp src/parser.cpp)
+target_compile_features(parse_trades PRIVATE cxx_std_17)
